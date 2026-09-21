@@ -51,26 +51,26 @@ def calculate_optimality_criteria(information_matrix, dispersion_matrix):
     prediction_variances_on_grid = []
 
         # Проходим по каждой точке x из нашей сетки
-        for x_val in grid_of_x_values:
-            vector = get_regression_basis_vector(x_val)
-            error_in_point = vector.T @ dispersion_matrix @ vector 
-            prediction_variances_on_grid.append(float(error_in_point))
-        
-        # ЦИКЛ ЗАКОНЧЕН. Теперь в prediction_variances_on_grid лежат ошибки для всех 500 точек.
-        
-        # Ищем самую большую ошибку (максимум) среди всех точек
-        g_criterion_value = float(np.max(prediction_variances_on_grid))
-        
-        # Возвращаем результаты
-        return {
-            "|M| (D-крит) ↑": d_criterion_value,
-            "tr(D) (A-крит) ↓": a_criterion_value,
-            "min λ(M) (E-крит) ↑": min_eigenvalue_of_inf_matrix,
-            "Phi_2 ↓": phi_2_criterion_value,
-            "Л-крит ↓": l_criterion_value,
-            "MV-крит ↓": mv_criterion_value,
-            "G-крит ↓": g_criterion_value
-        }
+    for x_val in grid_of_x_values:
+        vector = get_regression_basis_vector(x_val)
+        error_in_point = vector.T @ dispersion_matrix @ vector 
+        prediction_variances_on_grid.append(float(error_in_point))
+    
+    # В prediction_variances_on_grid лежат ошибки для всех 500 точек.
+    
+    # Ищем самую большую ошибку (максимум) среди всех точек
+    g_criterion_value = float(np.max(prediction_variances_on_grid))
+    
+    # Возвращаем результаты
+    return {
+        "|M| (D-крит) ↑": d_criterion_value,
+        "tr(D) (A-крит) ↓": a_criterion_value,
+        "min λ(M) (E-крит) ↑": min_eigenvalue_of_inf_matrix,
+        "Phi_2 ↓": phi_2_criterion_value,
+        "Л-крит ↓": l_criterion_value,
+        "MV-крит ↓": mv_criterion_value,
+        "G-крит ↓": g_criterion_value
+    }
 
 # 2. Расчет критериев для Планов № 1–4
 experiment_plans = {
@@ -93,7 +93,7 @@ dataframe_of_results = pd.DataFrame(criteria_results_for_plans).T
 
 # 3. Ранжирование планов
 
-# Направление оптимизации (True = чем меньше значение, тем лучше; False = чем больше значение, тем лучше)
+# Мало True - Хорошо, много False - Хорошо 
 is_smaller_better_for_criterion = {
     "|M| (D-крит) ↑": False,
     "tr(D) (A-крит) ↓": True,
@@ -128,18 +128,29 @@ print(dataframe_of_ranks.to_string())
 # Допустимый диапазон веса q: от 0 до 0.5
 array_of_q_weights = np.linspace(0.01, 0.49, 500)
 determinant_values_for_q = []
-
+# Перебираем все возможные варианты веса q (доли попыток для крайних точек)
 for current_q_weight in array_of_q_weights:
+    
+    # Вычисляем информационную матрицу 
     inf_matrix_for_current_q, _ = calculate_information_and_dispersion_matrices(
-        design_points=[-1, 0, 1], 
-        design_weights=[current_q_weight, 1 - 2 * current_q_weight, current_q_weight]
+        design_points=[-1, 0, 1], # Точки измерений: левая, центр, правая
+        # Задаем веса: крайним по 'q', а центру — всё, что осталось 
+        design_weights=[current_q_weight, 1 - 2 * current_q_weight, current_q_weight] 
     )
+    
+    # Считаем определитель (оценку качества плана) и добавляем в список
     determinant_values_for_q.append(np.linalg.det(inf_matrix_for_current_q))
 
+# Преобразуем обычный список в массив NumPy для быстрого поиска
 determinant_values_for_q = np.array(determinant_values_for_q)
 
+# Находим позицию (индекс) самого большого значения определителя
 index_of_max_determinant = np.argmax(determinant_values_for_q)
+
+# По найденному индексу достаем идеальный вес 'q', который дал этот максимум...
 optimal_q_weight = array_of_q_weights[index_of_max_determinant]
+
+# само максимальное значение определителя
 maximum_determinant_value = determinant_values_for_q[index_of_max_determinant]
 
 print("\n" + "=" * 80)
