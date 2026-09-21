@@ -2,16 +2,16 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# ==========================================
-# 1. Определение модели и вспомогательных функций
-# ==========================================
+
+
+
 # Квадратичная модель: f(x) = [1, x, x^2]^T, количество параметров модели = 3
 def get_regression_basis_vector(x_value):
     """Возвращает вектор базисных функций для точки x."""
     return np.array([1.0, x_value, x_value**2])
 
 def calculate_information_and_dispersion_matrices(design_points, design_weights):
-    """Вычисляет информационную матрицу Фишера и дисперсионную матрицу (матрицу ковариаций)."""
+    # Вычисляет информационную матрицу Фишера и дисперсионную матрицу (матрицу ковариаций).
     information_matrix = np.zeros((3, 3))
     
     for current_point, current_weight in zip(design_points, design_weights):
@@ -63,9 +63,8 @@ def calculate_optimality_criteria(information_matrix, dispersion_matrix):
         "G-крит ↓": g_criterion_value
     }
 
-# ==========================================
+
 # 2. Расчет критериев для Планов № 1–4
-# ==========================================
 experiment_plans = {
     "План 1": {"points": [-1, 0, 1], "weights": [0.2, 0.6, 0.2]},
     "План 2": {"points": [-1, 0, 1], "weights": [0.25, 0.5, 0.25]},
@@ -83,9 +82,9 @@ for plan_name, plan_data in experiment_plans.items():
 
 dataframe_of_results = pd.DataFrame(criteria_results_for_plans).T
 
-# ==========================================
+
 # 3. Ранжирование планов
-# ==========================================
+
 # Направление оптимизации (True = чем меньше значение, тем лучше; False = чем больше значение, тем лучше)
 is_smaller_better_for_criterion = {
     "|M| (D-крит) ↑": False,
@@ -114,9 +113,9 @@ print(" РАНГИ ПЛАНОВ (1 — лучший, 4 — худший)")
 print("=" * 80)
 print(dataframe_of_ranks.to_string())
 
-# ==========================================
+
 # 4. Анализ D-оптимальности как функции от q
-# ==========================================
+
 # Спектр: [-1, 0, 1], вес левой точки = q, вес центра = 1 - 2q, вес правой точки = q
 # Допустимый диапазон веса q: от 0 до 0.5
 array_of_q_weights = np.linspace(0.01, 0.49, 500)
