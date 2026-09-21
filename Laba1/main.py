@@ -11,14 +11,15 @@ def get_regression_basis_vector(x_value):
     return np.array([1.0, x_value, x_value**2])
 
 def calculate_information_and_dispersion_matrices(design_points, design_weights):
-    # Вычисляет информационную матрицу Фишера и дисперсионную матрицу (матрицу ковариаций).
+    # Вычисляет информационную матрицу Фишера и дисперсионную матрицу .
     information_matrix = np.zeros((3, 3))
     
     for current_point, current_weight in zip(design_points, design_weights):
+        # Превращаем вектор в столбец
         basis_vector_column = get_regression_basis_vector(current_point).reshape(-1, 1)
         # Накапливаем сумму: вес точки * (вектор-столбец умноженный на вектор-строку)
         information_matrix += current_weight * (basis_vector_column @ basis_vector_column.T)
-        
+     # Вычисляем дисперсионную матрицу как обратную информационной матрицы 
     dispersion_matrix = np.linalg.inv(information_matrix)
     return information_matrix, dispersion_matrix
 
@@ -47,22 +48,29 @@ def calculate_optimality_criteria(information_matrix, dispersion_matrix):
     
     # G-критерий: Максимальная дисперсия прогноза функции на области планирования [-1, 1] (минимизируется)
     grid_of_x_values = np.linspace(-1, 1, 500)
-    prediction_variances_on_grid = [
-        float(get_regression_basis_vector(x_val).T @ dispersion_matrix @ get_regression_basis_vector(x_val)) 
-        for x_val in grid_of_x_values
-    ]
-    g_criterion_value = float(np.max(prediction_variances_on_grid))
-    
-    return {
-        "|M| (D-крит) ↑": d_criterion_value,
-        "tr(D) (A-крит) ↓": a_criterion_value,
-        "min λ(M) (E-крит) ↑": min_eigenvalue_of_inf_matrix,
-        "Phi_2 ↓": phi_2_criterion_value,
-        "Л-крит ↓": l_criterion_value,
-        "MV-крит ↓": mv_criterion_value,
-        "G-крит ↓": g_criterion_value
-    }
+    prediction_variances_on_grid = []
 
+        # Проходим по каждой точке x из нашей сетки
+        for x_val in grid_of_x_values:
+            vector = get_regression_basis_vector(x_val)
+            error_in_point = vector.T @ dispersion_matrix @ vector 
+            prediction_variances_on_grid.append(float(error_in_point))
+        
+        # ЦИКЛ ЗАКОНЧЕН. Теперь в prediction_variances_on_grid лежат ошибки для всех 500 точек.
+        
+        # Ищем самую большую ошибку (максимум) среди всех точек
+        g_criterion_value = float(np.max(prediction_variances_on_grid))
+        
+        # Возвращаем результаты
+        return {
+            "|M| (D-крит) ↑": d_criterion_value,
+            "tr(D) (A-крит) ↓": a_criterion_value,
+            "min λ(M) (E-крит) ↑": min_eigenvalue_of_inf_matrix,
+            "Phi_2 ↓": phi_2_criterion_value,
+            "Л-крит ↓": l_criterion_value,
+            "MV-крит ↓": mv_criterion_value,
+            "G-крит ↓": g_criterion_value
+        }
 
 # 2. Расчет критериев для Планов № 1–4
 experiment_plans = {
