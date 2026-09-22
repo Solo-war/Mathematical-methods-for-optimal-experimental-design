@@ -152,7 +152,7 @@ maximum_determinant_value = determinant_values_for_q[index_of_max_determinant]
 
 print("\n" + "=" * 80)
 print(f"Оптимум D-критерия: q* = {optimal_q_weight:.4f} с |M(q*)| = {maximum_determinant_value:.4f}")
-print("Теоретический оптимум: q = 0.25 (соответствует Плану № 4)")
+print("Теоретический оптимум: q = 0.25 (соответствует Плану № 2)")
 print("=" * 80)
 
 # Построение графика
