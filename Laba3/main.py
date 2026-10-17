@@ -236,7 +236,7 @@ det_20_values = [all_experiments_results["Сетка 20x20"][n]["det_M"] for n i
 
 ax_crit.plot(observation_numbers_list, det_10_values, marker="o", linewidth=2, label="Сетка 10x10", color="royalblue")
 ax_crit.plot(observation_numbers_list, det_20_values, marker="s", linewidth=2, linestyle="--", label="Сетка 20x20", color="crimson")
-ax_crit.axhline(0.011432, color="green", linestyle=":", alpha=0.8, label="Теоретический предел непрерывного плана (|M*| ≈ 0.01143)")
+ax_crit.axhline(0.011427, color="green", linestyle=":", alpha=0.8, label="Теоретический предел непрерывного плана (|M*| ≈ 0.011427)")
 ax_crit.set_title("Зависимость определителя информационной матрицы |M(e_N)| от числа наблюдений N", fontsize=12)
 ax_crit.set_xlabel("Число наблюдений N", fontsize=11)
 ax_crit.set_ylabel("Определитель |M| (D-критерий)", fontsize=11)
