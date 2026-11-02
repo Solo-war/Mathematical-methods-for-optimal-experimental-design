@@ -1,0 +1,852 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.example.org/sports-club-ai#"
+     xml:base="http://www.example.org/sports-club-ai"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:sports-club-ai="http://www.example.org/sports-club-ai#">
+    <owl:Ontology rdf:about="http://www.example.org/sports-club-ai"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#float -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#float"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#integer -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#integer"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#string -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#belongsToPlan -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#belongsToPlan">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#ProgressRecord"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#ClientPlan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#contains -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#contains">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#ClientPlan"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#PlanItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#contraindicatedFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#contraindicatedFor">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#PlanItem"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#MedicalLimitation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#generatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#generatedBy">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#WorkoutPlan"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#AITrainer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasActivityEvent -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#hasActivityEvent">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#ActivityEvent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasCurrentStatus -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#hasCurrentStatus">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#ClientStatus"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasFatigueLevel -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#hasFatigueLevel">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#ProgressRecord"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#FatigueLevel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasLimitation -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#hasLimitation">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#MedicalLimitation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasPlan -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#hasPlan">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#WorkoutPlan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasPreviousStatus -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#hasPreviousStatus">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#ClientStatus"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasProgressRecord -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#hasProgressRecord">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#ProgressRecord"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasStatus -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#hasStatus">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#ClientPlan"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#PlanStatus"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasTrainer -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#hasTrainer">
+        <owl:inverseOf rdf:resource="http://www.example.org/sports-club-ai#isTrainerOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#AITrainer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#isTrainerOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#isTrainerOf">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#AITrainer"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#triggers -->
+
+    <owl:ObjectProperty rdf:about="http://www.example.org/sports-club-ai#triggers">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#InterventionEvent"/>
+        <rdfs:range rdf:resource="http://www.example.org/sports-club-ai#AITrainer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#churnProbability -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/sports-club-ai#churnProbability">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#endDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/sports-club-ai#endDate">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#ClientPlan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasAge -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/sports-club-ai#hasAge">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#hasTopic -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/sports-club-ai#hasTopic">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#InteractionEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#mood -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/sports-club-ai#mood">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#ProgressRecord"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#planDurationDays -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/sports-club-ai#planDurationDays">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#WorkoutPlan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#recordDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/sports-club-ai#recordDate">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#ProgressRecord"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#rpe -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/sports-club-ai#rpe">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#ProgressRecord"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#startDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.example.org/sports-club-ai#startDate">
+        <rdfs:domain rdf:resource="http://www.example.org/sports-club-ai#ClientPlan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#AITrainer -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#AITrainer"/>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#ActiveClient -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#ActiveClient">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.example.org/sports-club-ai#Client"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#hasPlan"/>
+                        <owl:someValuesFrom rdf:resource="http://www.example.org/sports-club-ai#WorkoutPlan"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#ActivityEvent -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#ActivityEvent"/>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Beginner -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#Beginner">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#BeginnerExercise -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#BeginnerExercise">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#Exercise"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#ChurnriskEvent -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#ChurnriskEvent">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#InterventionEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Client -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#Client">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#hasTrainer"/>
+                <owl:someValuesFrom rdf:resource="http://www.example.org/sports-club-ai#AITrainer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#ClientPlan -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#ClientPlan"/>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#ClientStatus -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#ClientStatus"/>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Exercise -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#Exercise">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#PlanItem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Experienced -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#Experienced">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#hasPlan"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.example.org/sports-club-ai#WorkoutPlan"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#FatigueLevel -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#FatigueLevel">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#MoodStatus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#HighRiskClient -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#HighRiskClient">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#churnProbability"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.75</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#InteractionEvent -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#InteractionEvent">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#ActivityEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#InterventionEvent -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#InterventionEvent">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#ActivityEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Meal -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#Meal">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#PlanItem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#MedicalLimitation -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#MedicalLimitation"/>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#MoodStatus -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#MoodStatus"/>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#NeedsLoadAdjustment -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#NeedsLoadAdjustment">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.example.org/sports-club-ai#Client"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#hasProgressRecord"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.example.org/sports-club-ai#ProgressRecord"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#hasFatigueLevel"/>
+                                        <owl:hasValue rdf:resource="http://www.example.org/sports-club-ai#HighFatigue"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#NutritionPlan -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#NutritionPlan">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#ClientPlan"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#PlanItem -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#PlanItem"/>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#PlanStatus -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#PlanStatus"/>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#ProgressRecord -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#ProgressRecord"/>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#ReturningClient -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#ReturningClient">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.example.org/sports-club-ai#Client"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#hasCurrentStatus"/>
+                        <owl:hasValue rdf:resource="http://www.example.org/sports-club-ai#ActiveStatus"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#hasPreviousStatus"/>
+                        <owl:hasValue rdf:resource="http://www.example.org/sports-club-ai#SleepingStatus"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#SafePlan -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#SafePlan">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.example.org/sports-club-ai#ClientPlan"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#contains"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.example.org/sports-club-ai#PlanItem"/>
+                                    <owl:Class>
+                                        <owl:complementOf>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#contraindicatedFor"/>
+                                                <owl:someValuesFrom rdf:resource="http://www.example.org/sports-club-ai#MedicalLimitation"/>
+                                            </owl:Restriction>
+                                        </owl:complementOf>
+                                    </owl:Class>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Sleeping -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#Sleeping">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#StrictSleeping -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#StrictSleeping">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.example.org/sports-club-ai#Sleeping"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#hasPlan"/>
+                                <owl:someValuesFrom rdf:resource="http://www.example.org/sports-club-ai#WorkoutPlan"/>
+                            </owl:Restriction>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#TargetAudience -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#TargetAudience">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.example.org/sports-club-ai#Client"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.example.org/sports-club-ai#Beginner"/>
+                            <rdf:Description rdf:about="http://www.example.org/sports-club-ai#Sleeping"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#VisitEvent -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#VisitEvent">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#ActivityEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#WorkoutPlan -->
+
+    <owl:Class rdf:about="http://www.example.org/sports-club-ai#WorkoutPlan">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/sports-club-ai#ClientPlan"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#contains"/>
+                <owl:someValuesFrom rdf:resource="http://www.example.org/sports-club-ai#Exercise"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.example.org/sports-club-ai#contains"/>
+                <owl:allValuesFrom rdf:resource="http://www.example.org/sports-club-ai#Exercise"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Active -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#Active">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#PlanStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#ActiveStatus -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#ActiveStatus">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#ClientStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Completed -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#Completed">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#PlanStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#HighFatigue -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#HighFatigue">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#FatigueLevel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Hypertension -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#Hypertension">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#MedicalLimitation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Ivanov -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#Ivanov">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#Beginner"/>
+        <hasPlan rdf:resource="http://www.example.org/sports-club-ai#plan1"/>
+        <hasProgressRecord rdf:resource="http://www.example.org/sports-club-ai#record_ivanov"/>
+        <hasTrainer rdf:resource="http://www.example.org/sports-club-ai#agent1"/>
+        <churnProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.2</churnProbability>
+        <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</hasAge>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#KneeInjury -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#KneeInjury">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#MedicalLimitation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#NormalFatigue -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#NormalFatigue">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#FatigueLevel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Paused -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#Paused">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#PlanStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Petrov -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#Petrov">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#Client"/>
+        <hasActivityEvent rdf:resource="http://www.example.org/sports-club-ai#event_001"/>
+        <hasCurrentStatus rdf:resource="http://www.example.org/sports-club-ai#ActiveStatus"/>
+        <hasLimitation rdf:resource="http://www.example.org/sports-club-ai#KneeInjury"/>
+        <hasPlan rdf:resource="http://www.example.org/sports-club-ai#plan_petrov"/>
+        <hasPreviousStatus rdf:resource="http://www.example.org/sports-club-ai#SleepingStatus"/>
+        <hasProgressRecord rdf:resource="http://www.example.org/sports-club-ai#record_01"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#Sidorov -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#Sidorov">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#StrictSleeping"/>
+        <churnProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.85</churnProbability>
+        <hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</hasAge>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#SleepingStatus -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#SleepingStatus">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#ClientStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#agent1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#agent1">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#AITrainer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#event_001 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#event_001">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#ChurnriskEvent"/>
+        <triggers rdf:resource="http://www.example.org/sports-club-ai#agent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#plan1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#plan1">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#WorkoutPlan"/>
+        <contains rdf:resource="http://www.example.org/sports-club-ai#pushups"/>
+        <generatedBy rdf:resource="http://www.example.org/sports-club-ai#agent1"/>
+        <planDurationDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</planDurationDays>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#plan_petrov -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#plan_petrov">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#WorkoutPlan"/>
+        <contains rdf:resource="http://www.example.org/sports-club-ai#squats"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#pushups -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#pushups">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#BeginnerExercise"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#record_01 -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#record_01">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#ProgressRecord"/>
+        <hasFatigueLevel rdf:resource="http://www.example.org/sports-club-ai#HighFatigue"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#record_ivanov -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#record_ivanov">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#ProgressRecord"/>
+        <hasFatigueLevel rdf:resource="http://www.example.org/sports-club-ai#HighFatigue"/>
+        <rpe rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</rpe>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.example.org/sports-club-ai#squats -->
+
+    <owl:NamedIndividual rdf:about="http://www.example.org/sports-club-ai#squats">
+        <rdf:type rdf:resource="http://www.example.org/sports-club-ai#Exercise"/>
+        <contraindicatedFor rdf:resource="http://www.example.org/sports-club-ai#KneeInjury"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
